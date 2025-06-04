@@ -1,0 +1,9 @@
+hey, this includes the steps you are supposed to do.
+
+// To clone the repo
+1.Go to the desired destination folder
+2.Execute git clone https://github.com/Mohitbisht3031/lpu_JAVADsa_STP25.git (this will create a new folder with the repo name only supposed to do once)
+
+// After everyday's class to get the new code
+1.Go to the repo's folder
+2. Execute git pull (inside the repo folder to get all the new code)
