@@ -72,4 +72,45 @@ public class LL {
         return h;
     }
 
+    public int len(LLnode h){
+        if(h == null) return 0;
+        int c = 0;
+        LLnode t = h;
+        while(t != null){
+            c++;
+            t = t.next;
+        }
+        return c;
+    }
+
+    public int lenRecursion(LLnode h){
+        if(h == null)return 0;
+        int l = lenRecursion(h.next);
+        return l+1;
+    }
+
+    public LLnode reverseRec(LLnode h){
+        if(h == null || h.next == null)return h;
+        LLnode nh = reverseRec(h.next);
+        LLnode t = h.next;
+        t.next = h;
+        h.next = null;
+        return nh;
+    }
+
+    public LLnode reverseIterative(LLnode h){
+        if(h == null || h.next == null)return h;
+        LLnode prev = null;
+        LLnode c = h;
+        LLnode n = h.next;
+        while (c != null) {
+            c.next = prev;
+            prev =c;
+            c = n;
+            if(n != null)n = n.next;
+        }
+
+        return prev;
+
+    }
 }
