@@ -1,4 +1,5 @@
 package Day20;
+import java.util.HashSet;
 import java.util.Scanner;
 
 import Day20.LLnode;
@@ -111,6 +112,66 @@ public class LL {
         }
 
         return prev;
-
     }
+
+    public LLnode middleNode(LLnode h){
+        if(h == null || h.next == null)return h;
+        LLnode s = h;
+        LLnode f = h;
+        while(f != null && f.next != null){
+            s = s.next;
+            f = f.next.next;
+        }
+
+        return s;
+    }
+
+    public boolean haveCycle(LLnode h){
+        if(h == null || h.next == null)return false;
+        HashSet<LLnode> st = new HashSet<>();
+        LLnode t = h;
+        while(t != null){
+            if(st.contains(t))return true;
+            st.add(t);
+            t = t.next;
+        }
+        return false;
+    }
+
+    public boolean haveCycleOpti(LLnode h){
+        if(h == null | h.next == null)return false;
+        LLnode f = h;
+        LLnode s = h;
+
+        while(f != null && f.next != null){
+            s = s.next;
+            f = f.next.next;
+            if(s == f)return true;
+        }
+        return false;
+    }
+
+    public LLnode cycleStart(LLnode h){
+        if(h == null || h.next == null)return null;
+        LLnode s = h;
+        LLnode f = h;
+        while(f != null && f.next != null){
+            s = s.next;
+            f = f.next.next;
+            if(f == s)break;
+        }
+
+        LLnode ans = null;
+        if(f == s){
+            s = h;
+            while(s != f){
+                s = s.next;
+                f = f.next;
+            }
+            ans = s;
+        }
+
+        return ans;
+    }
+
 }
